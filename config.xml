@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="at.wifiwien.superpaint" version="0.1.0" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+  <name>Superpaint</name>
+  <description>Die coolste Zeichenapp der Welt!</description>
+  <author email="vincenza@wifi-it.at" href="http://www.wifiwien.at">
+    JS SW Developer Team 518
+  </author>
+  <content src="index.html" />
+  <preferences name="android-minSdkVersion" value="26" />
+
+  <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />
+
+  <platform name="android">
+    <icon density="ldpi" src="www/icon.png" />
+  </platform>
+
+</widget>
