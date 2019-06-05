@@ -1,1 +1,37 @@
-body { font:24px Arial; }
+* { padding:0; margin:0; }
+h1 {
+  border-bottom:1px solid #000;
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:40px;
+  font:20px/40px Arial;
+  background:#ddd;
+  margin:0;
+  padding:0 20px;
+}
+canvas {
+  /* Breite und Höhe sind HTML-ATTRIBUTE!!! */
+  /*box-shadow:0 0 5px rgba(255,0,0,1) inset;*/
+  margin-top:40px;
+}
+footer {
+  border-top:1px solid #000;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:40px;
+}
+pen {
+  width:30px;
+  height:30px;
+  display:inline-block;
+  margin:5px;
+  border-radius:50%;
+  transition:all 0.5s;
+}
+pen.active {
+  transform:scale(0.5);
+}
