@@ -61,7 +61,15 @@ var superPaint = {
     ctx.clearRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
   },
   saveData:function() {
-    alert( 'Daten sind gespeichert!' );
+    window.canvas2ImagePlugin.saveImageDataToLibrary(
+         function(msg){
+            alert( 'Daten sind gespeichert!' );
+         },
+         function(err){
+            alert( 'Fehler beim Speichern.');
+         },
+         $('#stage').get(0)
+    );
   },
   init:function() {
     this.initPens();
