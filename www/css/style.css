@@ -11,6 +11,14 @@ h1 {
   margin:0;
   padding:0 20px;
 }
+h1 span {
+  position:absolute;
+  right:10px;
+}
+h1 span a {
+  color:#000;
+  text-decoration: none;
+}
 canvas {
   /* Breite und Höhe sind HTML-ATTRIBUTE!!! */
   /*box-shadow:0 0 5px rgba(255,0,0,1) inset;*/

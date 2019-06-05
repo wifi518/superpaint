@@ -17,7 +17,8 @@ var superPaint = {
       $( this ).addClass( 'active' );
     }
   },
-  drawModus: 'dot', /*line*/
+  drawModus: 'line', /*dot|line*/
+  dotSize:3,
   drawStart: function(e) {
     var offset = $('#stage').offset();
     superPaint.oldX = e.touches[0].pageX - offset.left;
@@ -30,10 +31,10 @@ var superPaint = {
     var y = e.touches[0].pageY - offset.top;
     var ctx = superPaint.ctx;
     ctx.fillStyle = ctx.strokeStyle = superPaint.color;
-    ctx.lineWidth = 5;
+    ctx.lineWidth = superPaint.dotSize;
     ctx.beginPath();
     if ( superPaint.drawModus == 'dot' ) {
-      ctx.arc(x,y,10,0,2*Math.PI);
+      ctx.arc(x,y,superPaint.dotSize,0,2*Math.PI);
       ctx.fill();
     }
     if ( superPaint.drawModus == 'line' ) {
@@ -55,9 +56,18 @@ var superPaint = {
       .on('touchstart', this.drawStart )
       .on('touchmove', this.draw );
   },
+  clearAll:function() {
+    var ctx = superPaint.ctx;
+    ctx.clearRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
+  },
+  saveData:function() {
+    alert( 'Daten sind gespeichert!' );
+  },
   init:function() {
     this.initPens();
     this.initCanvas();
+    $('#b_clear').on('click',this.clearAll );
+    $('#b_save').on('click',this.saveData );
   }
 }
 
