@@ -48,6 +48,7 @@ var superPaint = {
   },
   initCanvas:function() {
     this.ctx = $('#stage').get(0).getContext('2d');
+    this.clearAll();
     $( '#stage' )
       .attr({
         width:$(window).width(),
@@ -58,7 +59,8 @@ var superPaint = {
   },
   clearAll:function() {
     var ctx = superPaint.ctx;
-    ctx.clearRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
   },
   saveData:function() {
     window.canvas2ImagePlugin.saveImageDataToLibrary(
