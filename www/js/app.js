@@ -98,6 +98,8 @@ var superPaint = function() { // IIFE
   },
   openCam:function(e) {
     e.preventDefault();
+    alert( $('#stage').width() );
+    alert(  $('#stage').height() );
     navigator.camera.getPicture(
       _t.addPhoto2Canvas,
       function() { alert( 'Camera Fehler' ); },

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="at.wifiwien.superpaint" version="0.3.0-b004" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="at.wifiwien.superpaint" version="0.3.0-b005" xmlns="http://www.w3.org/ns/widget" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>Superpaint</name>
   <description>Die coolste Zeichenapp der Welt!</description>
   <author email="vincenza@wifi-it.at" href="http://www.wifiwien.at">
