@@ -1,18 +1,19 @@
 console.log( 'JS loaded' );
-var superPaint = {
+var superPaint = function() { // IIFE
+  var _t = {
   color:'#fff',
   initPens:function() {
     var colors = ['#000','#f00','#0f0','#00f','#ff0','#f0f','#0ff','#ccc','#fc3','#63c'];
     for (let i in colors ) {
       $( '<pen>' )
         .css({background:colors[i]})
-        .on('click', this.activatePen(colors[i]) )
+        .on('click', _t.activatePen(colors[i]) )
         .appendTo( 'footer' );
     }
   },
   activatePen:function( newColor ) {
     return function() {
-      superPaint.color = newColor;
+      _t.color = newColor;
       $( '.active' ).removeClass( 'active');
       $( this ).addClass( 'active' );
     }
@@ -21,44 +22,44 @@ var superPaint = {
   dotSize:3,
   drawStart: function(e) {
     var offset = $('#stage').offset();
-    superPaint.oldX = e.touches[0].pageX - offset.left;
-    superPaint.oldY = e.touches[0].pageY - offset.top;
-    superPaint.draw(e);
+    _t.oldX = e.touches[0].pageX - offset.left;
+    _t.oldY = e.touches[0].pageY - offset.top;
+    _t.draw(e);
   },
   draw: function(e) {
     var offset = $('#stage').offset();
     var x = e.touches[0].pageX - offset.left;
     var y = e.touches[0].pageY - offset.top;
     var ctx = superPaint.ctx;
-    ctx.fillStyle = ctx.strokeStyle = superPaint.color;
-    ctx.lineWidth = superPaint.dotSize;
+    ctx.fillStyle = ctx.strokeStyle = _t.color;
+    ctx.lineWidth = _t.dotSize;
     ctx.beginPath();
-    if ( superPaint.drawModus == 'dot' ) {
-      ctx.arc(x,y,superPaint.dotSize,0,2*Math.PI);
+    if ( _t.drawModus == 'dot' ) {
+      ctx.arc(x,y,_t.dotSize,0,2*Math.PI);
       ctx.fill();
     }
-    if ( superPaint.drawModus == 'line' ) {
-      ctx.moveTo(superPaint.oldX,superPaint.oldY);
+    if ( _t.drawModus == 'line' ) {
+      ctx.moveTo(_t.oldX,_t.oldY);
       ctx.lineTo(x,y);
       ctx.stroke();
-      superPaint.oldX = x;
-      superPaint.oldY = y;
+      _t.oldX = x;
+      _t.oldY = y;
     }
 
   },
   initCanvas:function() {
-    this.ctx = $('#stage').get(0).getContext('2d');
-    this.clearAll();
+    _t.ctx = $('#stage').get(0).getContext('2d');
+    _t.clearAll();
     $( '#stage' )
       .attr({
         width:$(window).width(),
         height:$(window).height()-80
       })
-      .on('touchstart', this.drawStart )
-      .on('touchmove', this.draw );
+      .on('touchstart', _t.drawStart )
+      .on('touchmove', _t.draw );
   },
   clearAll:function() {
-    var ctx = superPaint.ctx;
+    var ctx = _t.ctx;
     ctx.fillStyle = '#fff';
     ctx.fillRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
   },
@@ -74,13 +75,14 @@ var superPaint = {
     );
   },
   init:function() {
-    this.initPens();
-    this.initCanvas();
-    $('#b_clear').on('click',this.clearAll );
-    $('#b_save').on('click',this.saveData );
+    _t.initPens();
+    _t.initCanvas();
+    $('#b_clear').on('click',_t.clearAll );
+    $('#b_save').on('click',_t.saveData );
   }
 }
-
+return _t;
+}();
 
 document.addEventListener( 'deviceready', function() {
   console.log( 'Device ready' );
