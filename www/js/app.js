@@ -1,4 +1,17 @@
 console.log( 'JS loaded' );
+
+// show error on mobile
+window.onerror = function( err ) {
+  alert( err );
+  return true;
+}
+
+
+
+
+
+
+
 var superPaint = function() { // IIFE
   var _t = {
   color:'#fff',
@@ -78,6 +91,7 @@ var superPaint = function() { // IIFE
     var bg = new Image();
     bg.src = image;
     // ... add2canvas ?
+    alert( image );
     bg.onload = function() {
       _t.ctx.drawImage( bg, 0, 0 );
     }
