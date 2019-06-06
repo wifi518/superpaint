@@ -78,7 +78,7 @@ var superPaint = function() { // IIFE
     ctx.fillRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
 
     if ( _t.picPath ) {
-      addPhoto2Canvas( _t.picPath );
+      _t.addPhoto2Canvas( _t.picPath );
     }
 
   },
