@@ -90,8 +90,21 @@ var superPaint = function() { // IIFE
   addPhoto2Canvas: function( image ) {
     var bg = new Image();
     bg.src = image;
+    // ... add2canvas ?
     bg.onload = function() {
-      _t.ctx.drawImage( bg, 0, 0 );
+
+      //debug
+      alert( 'Image: '+bg.width+'/'+bg.height +'\nCanvas: ' +   $('#stage').width()+'/'+
+        $('#stage').height() );
+
+      _t.ctx.drawImage(
+        bg,
+        0,
+        0,
+        $('#stage').width(),
+        $('#stage').height()
+      );
+
     }
   },
   openCam:function(e) {
@@ -100,8 +113,8 @@ var superPaint = function() { // IIFE
       _t.addPhoto2Canvas,
       function() { alert( 'Camera Fehler' ); },
       {
-        targetWidth: $('#stage').height(),
-        targetHeight: $('#stage').height()*0.75,
+        targetWidth:1000,
+        targetHeight:1500,
         correctOrientation: true
       }
     )
