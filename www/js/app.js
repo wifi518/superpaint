@@ -93,7 +93,9 @@ var superPaint = function() { // IIFE
     // ... add2canvas ?
     alert( image );
     bg.onload = function() {
+      alert( bg );
       _t.ctx.drawImage( bg, 0, 0 );
+
     }
   },
   openCam:function(e) {
@@ -101,7 +103,10 @@ var superPaint = function() { // IIFE
     navigator.camera.getPicture(
       _t.addPhoto2Canvas,
       function() { alert( 'Camera Fehler' ); },
-      {}
+      {
+        targetWidth: $('#stage').width(),
+        targetHeight: $('#stage').height(),
+      }
     )
   },
   init:function() {
