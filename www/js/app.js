@@ -95,21 +95,19 @@ var superPaint = function() { // IIFE
       alert( bg.width );
       alert( bg.height );
       alert( $('#stage').width() );
-      alert( $(window).width() );
+      alert( $('#stage').height() );
       _t.ctx.drawImage( bg, 0, 0 );
 
     }
   },
   openCam:function(e) {
     e.preventDefault();
-    alert( $('#stage').width() );
-
     navigator.camera.getPicture(
       _t.addPhoto2Canvas,
       function() { alert( 'Camera Fehler' ); },
       {
-        targetWidth: $('#stage').height(),
-        targetHeight: $('#stage').width(),
+        targetWidth: $(window).height(),
+        targetHeight: $(window).width(),
         correctOrientation: true
       }
     )
