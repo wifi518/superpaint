@@ -10,7 +10,7 @@
   <preference name="Orientation" value="portrait" />
 
   <plugin name="cordova-plugin-canvas2image" spec="~0.7.0" source="npm" />
-
+  <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
   <!--<plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />-->
 
   <platform name="android">

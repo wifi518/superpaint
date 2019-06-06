@@ -74,9 +74,26 @@ var superPaint = function() { // IIFE
          $('#stage').get(0)
     );
   },
+  addPhoto2Canvas: function( image ) {
+    var bg = new Image();
+    bg.src = image;
+    // ... add2canvas ?
+    bg.onload = function() {
+      _t.ctx.drawImage( bg, 0, 0 );
+    }
+  },
+  openCam:function(e) {
+    e.preventDefault();
+    navigator.camera.getPicture(
+      _t.addPhoto2Canvas,
+      function() { alert( 'Camera Fehler' ); },
+      {}
+    )
+  },
   init:function() {
     _t.initPens();
     _t.initCanvas();
+    $('#b_foto').on('click',_t.openCam )
     $('#b_clear').on('click',_t.clearAll );
     $('#b_save').on('click',_t.saveData );
   }
