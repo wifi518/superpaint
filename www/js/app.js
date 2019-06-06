@@ -103,7 +103,7 @@ var superPaint = function() { // IIFE
       var c_ratio = cw/ch;
       var targetW, targetH;
 
-      if ( bg_ratio > c_ratio ) {
+      if ( bg_ratio < c_ratio ) {
         targetW = cw;
         targetH = cw/bg.width * bg.height;
       } else {
