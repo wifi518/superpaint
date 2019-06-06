@@ -93,16 +93,30 @@ var superPaint = function() { // IIFE
     // ... add2canvas ?
     bg.onload = function() {
 
+      var cw = $('#stage').width();
+      var ch = $('#stage').height();
+
       //debug
-      alert( 'Image: '+bg.width+'/'+bg.height +'\nCanvas: ' +   $('#stage').width()+'/'+
-        $('#stage').height() );
+      //alert( 'Image: '+bg.width+'/'+bg.height +'\nCanvas: ' +   cw+'/'+ch );
+
+      var bg_ratio = bg.width/bg.height;
+      var c_ratio = cw/ch;
+      var targetW, targetH;
+
+      if ( bg_ratio > c_ratio ) {
+        targetW = cw;
+        targetH = cw/bg.width * bg.height;
+      } else {
+        targetH = ch;
+        targetW = ch/bg.height * bg.width;
+      }
 
       _t.ctx.drawImage(
         bg,
         0,
         0,
-        $('#stage').width(),
-        $('#stage').height()
+        targetW,
+        targetH
       );
 
     }
