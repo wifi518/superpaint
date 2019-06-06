@@ -60,6 +60,7 @@ var superPaint = function() { // IIFE
     }
 
   },
+  picPath:false,
   initCanvas:function() {
     _t.ctx = $('#stage').get(0).getContext('2d');
     _t.clearAll();
@@ -75,6 +76,11 @@ var superPaint = function() { // IIFE
     var ctx = _t.ctx;
     ctx.fillStyle = '#fff';
     ctx.fillRect(0,0,$( '#stage' ).width(),$( '#stage' ).height());
+
+    if ( _t.picPath ) {
+      addPhoto2Canvas( _t.picPath );
+    }
+
   },
   saveData:function() {
     window.canvas2ImagePlugin.saveImageDataToLibrary(
@@ -88,6 +94,7 @@ var superPaint = function() { // IIFE
     );
   },
   addPhoto2Canvas: function( image ) {
+    _t.picPath = image;
     var bg = new Image();
     bg.src = image;
     // ... add2canvas ?
