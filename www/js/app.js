@@ -91,9 +91,7 @@ var superPaint = function() { // IIFE
     var bg = new Image();
     bg.src = image;
     // ... add2canvas ?
-    alert( image );
     bg.onload = function() {
-      alert( bg );
       _t.ctx.drawImage( bg, 0, 0 );
 
     }
@@ -106,6 +104,7 @@ var superPaint = function() { // IIFE
       {
         targetWidth: $('#stage').width(),
         targetHeight: $('#stage').height(),
+        correctOrientation: true
       }
     )
   },
